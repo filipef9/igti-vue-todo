@@ -1,10 +1,16 @@
 <template>
   <h1>Todo App</h1>
+
   <div v-if="!editMode">
-    <button @click="newTodo" >Novo</button>
+    <Button @click="newTodo" >Novo</Button>
     <todo-list></todo-list>
   </div>
-  <todo-item v-if="editMode" @voltar="voltar"></todo-item>
+
+  <todo-item
+    v-if="editMode"
+    @voltar="voltar"
+    @saveTodo="saveTodo"
+  ></todo-item>
 </template>
 
 <script>
@@ -18,7 +24,8 @@ export default {
   },
   data() {
     return {
-      editMode: false
+      editMode: false,
+      todos: []
     }
   },
   methods: {
@@ -27,7 +34,15 @@ export default {
     },
     voltar() {
       this.editMode = false;
+    },
+    saveTodo(todo) {
+      this.todos = [...this.todos, todo];
+      localStorage.setItem('todos', JSON.stringify(this.todos));
     }
+  },
+
+  created() {
+
   }
 }
 </script>

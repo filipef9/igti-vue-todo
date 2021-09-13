@@ -1,13 +1,22 @@
 <template>
-  <p>Todo Item</p>
-  <button @click="voltar">Voltar</button>
+  <InputText v-model="description" />
+  <Button @click="voltar">Voltar</Button>
+  <Button @click="saveTodo">Salvar</Button>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      description: ''
+    }
+  },
   methods: {
     voltar() {
       this.$emit('voltar');
+    },
+    saveTodo() {
+      this.$emit('saveTodo', { description: this.description });
     }
   }
 }
