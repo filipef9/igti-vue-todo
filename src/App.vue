@@ -1,10 +1,31 @@
 <template>
-  <h1>igti-vue-todo</h1>
+  <h1>Todo App</h1>
+  <div v-if="!editMode">
+    <button @click="newTodo">Novo</button>
+    <todo-list></todo-list>
+  </div>
+  <todo-item v-if="editMode"></todo-item>
 </template>
 
 <script>
-export default {
+import TodoList from './components/TodoList.vue';
+import TodoItem from './components/TodoItem.vue';
 
+export default {
+  components: {
+    TodoList,
+    TodoItem
+  },
+  data() {
+    return {
+      editMode: false
+    }
+  },
+  methods: {
+    newTodo() {
+
+    }
+  }
 }
 </script>
 
