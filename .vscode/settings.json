@@ -40,4 +40,5 @@
         ".history": true,
     },
     "git.ignoreLimitWarning": true,
+    "vetur.ignoreProjectWarning": true
 }
