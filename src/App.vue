@@ -3,7 +3,7 @@
 
   <div v-if="!editMode">
     <Button @click="newTodo" >Novo</Button>
-    <todo-list></todo-list>
+    <todo-list :todos="todos"></todo-list>
   </div>
 
   <todo-item
@@ -38,11 +38,15 @@ export default {
     saveTodo(todo) {
       this.todos = [...this.todos, todo];
       localStorage.setItem('todos', JSON.stringify(this.todos));
+      this.editMode = false;
     }
   },
 
   created() {
-
+    const todos = localStorage.getItem("todos");
+    if (todos) {
+      this.todos = [...JSON.parse(todos)];
+    }
   }
 }
 </script>
