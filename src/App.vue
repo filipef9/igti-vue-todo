@@ -1,10 +1,10 @@
 <template>
   <h1>Todo App</h1>
   <div v-if="!editMode">
-    <button @click="newTodo">Novo</button>
+    <button @click="newTodo" >Novo</button>
     <todo-list></todo-list>
   </div>
-  <todo-item v-if="editMode"></todo-item>
+  <todo-item v-if="editMode" @voltar="voltar"></todo-item>
 </template>
 
 <script>
@@ -23,7 +23,10 @@ export default {
   },
   methods: {
     newTodo() {
-
+      this.editMode = true;
+    },
+    voltar() {
+      this.editMode = false;
     }
   }
 }
