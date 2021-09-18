@@ -1,6 +1,10 @@
 <template>
-  <div v-for="(todo, index) in todos" :key="index">
-    <span>{{ todo.description }}</span>
+  <div class="todo-list">
+    <div v-for="(todo, index) in todos" :key="index" class="todo-item">
+      <span class="todo-label">{{ todo.description }}</span>
+      <Button icon="pi pi-pencil" class="p-button-roudend p-button-text" />
+      <Button icon="pi pi-trash" class="p-button-roudend p-button-text" />
+    </div>
   </div>
 </template>
 
@@ -13,5 +17,17 @@ export default {
 </script>
 
 <style scoped>
+  .todo-list {
+    margin: 1rem;
+  }
 
+  .todo-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .todo-label {
+    flex-grow: 1;
+  }
 </style>
