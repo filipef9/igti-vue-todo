@@ -13,12 +13,20 @@ export default {
       description: ''
     }
   },
+  props: {
+    todo: Object
+  },
+  created() {
+    if (this.todo) {
+      this.description = this.todo.description;
+    }
+  },
   methods: {
     voltar() {
       this.$emit('voltar');
     },
     saveTodo() {
-      this.$emit('saveTodo', { description: this.description });
+      this.$emit('saveTodo', { ...this.todo, description: this.description });
     }
   }
 }

@@ -2,7 +2,11 @@
   <div class="todo-list">
     <div v-for="(todo, index) in todos" :key="index" class="todo-item">
       <span class="todo-label">{{ todo.description }}</span>
-      <Button icon="pi pi-pencil" class="p-button-roudend p-button-text" />
+      <Button
+        icon="pi pi-pencil"
+        class="p-button-roudend p-button-text"
+        @click="$emit('editTodo', index)"
+      />
       <Button
         icon="pi pi-trash"
         class="p-button-roudend p-button-text"
