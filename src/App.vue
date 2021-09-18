@@ -3,7 +3,7 @@
 
   <div v-if="!editMode">
     <Button @click="newTodo" >Novo</Button>
-    <todo-list :todos="todos"></todo-list>
+    <todo-list :todos="todos" @deleteTodo="deleteTodo"></todo-list>
   </div>
 
   <todo-item
@@ -39,6 +39,10 @@ export default {
       this.todos = [...this.todos, todo];
       localStorage.setItem('todos', JSON.stringify(this.todos));
       this.editMode = false;
+    },
+    deleteTodo(indexTodoToDelete) {
+      this.todos.splice(indexTodoToDelete, 1);
+      localStorage.setItem('todos', JSON.stringify(this.todos));
     }
   },
 
